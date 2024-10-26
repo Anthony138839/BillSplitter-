@@ -1,0 +1,16 @@
+type Time = int;
+type ExpenseId = nat;
+type Expense = 
+ record {
+   amount: nat;
+   date: Time;
+   description: text;
+   id: ExpenseId;
+   participants: vec text;
+ };
+service : {
+  addExpense: (text, nat, vec text) -> (ExpenseId);
+  getAllExpenses: () -> (vec Expense) query;
+  getExpense: (ExpenseId) -> (opt Expense) query;
+  getExpensesByParticipant: (text) -> (vec Expense) query;
+}
